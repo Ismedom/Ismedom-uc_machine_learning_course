@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Power Forecasting API</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="font-sans max-w-4xl mx-auto my-12 px-8 bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen"
+  >
+    <div class="bg-white p-10 rounded-xl shadow-2xl">
+      <span
+        class="inline-block px-4 py-2 bg-green-500 text-white rounded-full font-bold mb-5"
+        >🟢 API Running</span
+      >
+      <h1 class="text-blue-600 mb-2 text-3xl font-bold">
+        ⚡ Power Forecasting API
+      </h1>
+      <p class="text-gray-600 mb-8 text-lg">
+        Backend server for household power consumption forecasting
+      </p>
+
+      <h2 class="text-2xl font-bold mb-6 text-gray-800">
+        📍 Available Endpoints
+      </h2>
+
+      <div class="bg-blue-50 p-5 my-4 rounded-lg border-l-4 border-blue-500">
+        <div class="flex items-center mb-2">
+          <span
+            class="inline-block px-3 py-1 bg-blue-500 text-white rounded text-sm font-bold mr-3"
+            >GET</span
+          >
+          <strong class="text-lg">/api/stats</strong>
+        </div>
+        <p class="text-gray-700">Get dataset statistics and information</p>
+      </div>
+
+      <div class="bg-blue-50 p-5 my-4 rounded-lg border-l-4 border-blue-500">
+        <div class="flex items-center mb-2">
+          <span
+            class="inline-block px-3 py-1 bg-green-500 text-white rounded text-sm font-bold mr-3"
+            >POST</span
+          >
+          <strong class="text-lg">/api/predict_single</strong>
+        </div>
+        <p class="text-gray-700 mb-2">
+          Make single prediction with custom features
+        </p>
+        <code class="bg-gray-200 px-2 py-1 rounded text-sm font-mono"
+          >Body: {"hour": 20, "dayofweek": 4, "lag_1h": 2.5, "lag_24h": 2.8,
+          "rolling_mean_24h": 2.3}</code
+        >
+      </div>
+
+      <div class="bg-blue-50 p-5 my-4 rounded-lg border-l-4 border-blue-500">
+        <div class="flex items-center mb-2">
+          <span
+            class="inline-block px-3 py-1 bg-blue-500 text-white rounded text-sm font-bold mr-3"
+            >GET</span
+          >
+          <strong class="text-lg">/api/visualizations</strong>
+        </div>
+        <p class="text-gray-700">Get generated visualization images</p>
+      </div>
+
+      <div class="bg-blue-50 p-5 my-4 rounded-lg border-l-4 border-blue-500">
+        <div class="flex items-center mb-2">
+          <span
+            class="inline-block px-3 py-1 bg-blue-500 text-white rounded text-sm font-bold mr-3"
+            >GET</span
+          >
+          <strong class="text-lg">/api/health</strong>
+        </div>
+        <p class="text-gray-700">Health check endpoint</p>
+      </div>
+
+      <h2 class="text-2xl font-bold mb-6 text-gray-800">
+        🚀 Quick Start Example
+      </h2>
+      <pre
+        class="bg-gray-800 text-green-400 p-5 rounded-lg overflow-x-auto text-sm mb-8"
+      ><code># 1. Train the model (run separately)
+python model.py
+
+# 2. Start the API server
+python main.py
+
+# 3. Get statistics
+curl http://localhost:8002/api/stats
+
+# 4. Make single prediction
+curl -X POST -H "Content-Type: application/json" \
+  -d '{"hour": 20, "dayofweek": 4, "lag_1h": 2.5, "lag_24h": 2.8, "rolling_mean_24h": 2.3}' \
+  http://localhost:8002/api/predict_single</code></pre>
+
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">📦 Response Format</h2>
+      <p class="mb-4 text-gray-700">
+        All endpoints return JSON with the following structure:
+      </p>
+      <pre
+        class="bg-gray-800 text-green-400 p-5 rounded-lg overflow-x-auto text-sm"
+      ><code>{
+  "success": true/false,
+  "message": "Description of result",
+  "data": { ... },
+  "error": "Error message (if failed)"
+}</code></pre>
+    </div>
+  </body>
+</html>

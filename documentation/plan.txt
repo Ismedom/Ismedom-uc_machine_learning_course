@@ -1,0 +1,10 @@
+
+ Run complete analysis
+ This will:
+ 1. Load data
+ 2. Show exploration plots (DISPLAYED on screen)
+ 3. Prepare features
+ 4. Train model
+ 5. Evaluate and show results
+ 6. Show result plots (DISPLAYED on screen)
+ 7. SAVE model automatically
